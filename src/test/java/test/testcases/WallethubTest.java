@@ -25,8 +25,8 @@ public class WallethubTest extends TC_Common {
 
 	@Test
 	public void createNewReview() {
-		String uName = ObjectRepository.reader.getUsername();
-		String pwd = ObjectRepository.reader.getPassword();
+		String uName = ObjectRepository.reader.getWalletHubUsername();
+		String pwd = ObjectRepository.reader.getWalletHubPwd();
 		
 		WallethubCompanyPage walletHub = new WallethubCompanyPage(driver)
 		.goToReviewSection()

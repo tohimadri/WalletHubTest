@@ -8,6 +8,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -23,6 +25,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -97,7 +100,13 @@ public class GenericHandlers {
 					} else if (osName.contains("Mac")) {
 						System.setProperty("webdriver.chrome.driver", ResourceHandler.getResourcePath("\\resources\\drivers\\chromedriver"));
 					}
-					driver = new ChromeDriver();
+					//Pass the argument 1 to allow and 2 to block the notification alert
+					Map<String, Object> prefs = new HashMap<String, Object>();
+					prefs.put("profile.default_content_setting_values.notifications", 2);
+					 
+					ChromeOptions options = new ChromeOptions();
+					options.setExperimentalOption("prefs", prefs);
+					driver = new ChromeDriver(options);
 					break;
 				case Firefox:
 					if (osName.contains("Window")) {

@@ -26,37 +26,37 @@ public class PropertyFileReader implements ConfigReader {
 
 	@Override
 	public BrowserType getBrowser() {
-		return BrowserType.valueOf(prop.getProperty("Browser"));
+		return BrowserType.valueOf(prop.getProperty("browser"));
 	}
 	
 	@Override
 	public int getPageLoadTimeOut() {
-		return Integer.parseInt(prop.getProperty("PageLoadTimeOut"));
+		return Integer.parseInt(prop.getProperty("pageload.timeout"));
 	}
 
 	@Override
 	public int getImplicitWait() {
-		return Integer.parseInt(prop.getProperty("ImplicitWait"));
+		return Integer.parseInt(prop.getProperty("implicit.wait"));
 	}
 
 	@Override
 	public int getExplicitWait() {
-		return Integer.parseInt(prop.getProperty("ExplicitWait"));
+		return Integer.parseInt(prop.getProperty("explicit.wait"));
 	}
 
 	@Override
 	public long getPollingTimeInMilliSecond() {
-		return Long.parseLong(prop.getProperty("PollingTimeInMilliSecond"));
+		return Long.parseLong(prop.getProperty("pollingtimein.millisecond"));
 	}
 	
 	@Override
-	public String getUsername() {
-		return prop.getProperty("Username");
+	public String getWalletHubUsername() {
+		return prop.getProperty("wallethub.username");
 	}
 
 	@Override
-	public String getPassword() {
-		return prop.getProperty("Password");
+	public String getWalletHubPwd() {
+		return prop.getProperty("wallethub.password");
 	}
 	
 	public Level getLoggerLevel() {
@@ -73,6 +73,16 @@ public class PropertyFileReader implements ConfigReader {
 			return Level.FATAL;
 		}
 		return Level.ALL;
+	}
+
+	@Override
+	public String getFacebookUname() {
+		return prop.getProperty("facebook.username");
+	}
+
+	@Override
+	public String getFacebookPwd() {
+		return prop.getProperty("facebook.password");
 	}
 
 }

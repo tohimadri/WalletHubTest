@@ -5,8 +5,10 @@ import browser.BrowserType;
 public interface ConfigReader {
 
 	public BrowserType getBrowser();
-	public String getUsername();
-	public String getPassword();
+	public String getWalletHubUsername();
+	public String getWalletHubPwd();
+	public String getFacebookUname();
+	public String getFacebookPwd();
 	public int getPageLoadTimeOut();
 	public int getImplicitWait();
 	public int getExplicitWait();
