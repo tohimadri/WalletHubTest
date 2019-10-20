@@ -89,39 +89,35 @@ public class GenericHandlers {
 				dc.setPlatform(Platform.MAC);
 			}
 
-			// this is for grid run
-			if(bRemote)
-				this.driver = new RemoteWebDriver(new URL("http://"+sHubUrl+":"+sHubPort+"/wd/hub"), dc);
-			else{ // this is for local run
-				switch (browser) {
-				case Chrome:
-					if (osName.contains("Window")) {
-						System.setProperty("webdriver.chrome.driver", ResourceHandler.getResourcePath("\\resources\\drivers\\chromedriver.exe"));
-					} else if (osName.contains("Mac")) {
-						System.setProperty("webdriver.chrome.driver", ResourceHandler.getResourcePath("\\resources\\drivers\\chromedriver"));
-					}
-					//Pass the argument 1 to allow and 2 to block the notification alert
-					Map<String, Object> prefs = new HashMap<String, Object>();
-					prefs.put("profile.default_content_setting_values.notifications", 2);
-					 
-					ChromeOptions options = new ChromeOptions();
-					options.setExperimentalOption("prefs", prefs);
-					driver = new ChromeDriver(options);
-					break;
-				case Firefox:
-					if (osName.contains("Window")) {
-						System.setProperty("webdriver.gecko.driver", ResourceHandler.getResourcePath("\\resources\\drivers\\geckodriver.exe"));
-					} else if (osName.contains("Mac")) {
-						System.setProperty("webdriver.gecko.driver", ResourceHandler.getResourcePath("\\resources\\drivers\\geckodriver"));
-					}
-					driver = new FirefoxDriver();
-					break;
-				case Iexplorer:
-					break;
-				default:
-					throw new RuntimeException("Provided browser name is not correct");
+			switch (browser) {
+			case Chrome:
+				if (osName.contains("Window")) {
+					System.setProperty("webdriver.chrome.driver", ResourceHandler.getResourcePath("\\resources\\drivers\\chromedriver.exe"));
+				} else if (osName.contains("Mac")) {
+					System.setProperty("webdriver.chrome.driver", ResourceHandler.getResourcePath("\\resources\\drivers\\chromedriver"));
 				}
+				//Pass the argument 1 to allow and 2 to block the notification alert
+				Map<String, Object> prefs = new HashMap<String, Object>();
+				prefs.put("profile.default_content_setting_values.notifications", 2);
+				 
+				ChromeOptions options = new ChromeOptions();
+				options.setExperimentalOption("prefs", prefs);
+				driver = new ChromeDriver(options);
+				break;
+			case Firefox:
+				if (osName.contains("Window")) {
+					System.setProperty("webdriver.gecko.driver", ResourceHandler.getResourcePath("\\resources\\drivers\\geckodriver.exe"));
+				} else if (osName.contains("Mac")) {
+					System.setProperty("webdriver.gecko.driver", ResourceHandler.getResourcePath("\\resources\\drivers\\geckodriver"));
+				}
+				driver = new FirefoxDriver();
+				break;
+			case Iexplorer:
+				break;
+			default:
+				throw new RuntimeException("Provided browser name is not correct");
 			}
+		
 			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(ObjectRepository.reader.getImplicitWait(), TimeUnit.SECONDS);
 			driver.get(url);

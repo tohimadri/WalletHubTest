@@ -6,15 +6,21 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import configreader.ObjectRepository;
 import logger.LoggerHandler;
 import wrappers.GenericHandlers;
+import wrappers.WaitHandler;
 
 public class WallethubNewReview {
 
 	private static final Logger log = LoggerHandler.getLogger(WallethubNewReview.class);
 	
 	private GenericHandlers handlers;
+	private WaitHandler wait;
 	WebDriver driver;
+	
+	@FindBy(css="h4.wrev-prd-name")
+	WebElement insuranceCompany;
 	
 	@FindBy(xpath="//span[contains(text(),'Select...')]")
 	WebElement dropDownList;
@@ -32,6 +38,13 @@ public class WallethubNewReview {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 		handlers = new GenericHandlers(this.driver);
+		wait = new WaitHandler(this.driver);
+	}
+	
+	public String getCompanyText() {
+		log.info("Verifying Company Text");
+		wait.waitForElementToBeVisible(insuranceCompany, ObjectRepository.reader.getExplicitWait());
+		return handlers.getText(insuranceCompany);
 	}
 	
 	public WallethubNewReview clickInsuranceDropdown() {

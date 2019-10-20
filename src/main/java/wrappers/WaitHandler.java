@@ -28,7 +28,7 @@ public class WaitHandler {
 	public void waitForElementToBeClickable(long time, WebElement element) {
 		WebDriverWait wait = new WebDriverWait(driver, time);
 		wait.until(ExpectedConditions.elementToBeClickable(element));
-		log.info("Element found and can be clicked");
+		log.info("Webelement " +element+" found and can be clicked");
 	}
 
 	public void waitForElementToBeVisible(WebElement element, long timeout) {

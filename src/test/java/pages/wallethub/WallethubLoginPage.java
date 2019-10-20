@@ -21,6 +21,9 @@ public class WallethubLoginPage {
 
 	@FindBy(xpath = "//a[text()='Login']")
 	WebElement loginLink;
+	
+	@FindBy(css="span[class='brgm-button brgm-signup']")
+	WebElement login;
 
 	@FindBy(name = "em")
 	WebElement emailId;
@@ -45,6 +48,12 @@ public class WallethubLoginPage {
 		return this;
 	}
 
+	public WallethubJoinPage clickLogin() {
+		log.info("Clicking Login");
+		handlers.clickElement(login);
+		return new WallethubJoinPage(this.driver);
+	}
+	
 	public WallethubLoginPage enterUsername(String email) {
 		log.info("Entering username");
 		wait.waitForElementToBeClickable(ObjectRepository.reader.getExplicitWait(), emailId);

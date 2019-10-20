@@ -24,7 +24,7 @@ public class FacebookPostPage {
 	@FindBy(css="div#pagelet_composer")
 	WebElement postDialog;
 	
-	@FindBy(xpath="//div[@id='js_pt']//div[@class='_1p1v']")
+	@FindBy(xpath="//div[@id='pagelet_composer']//following::div[@class='_1p1v']")
 	WebElement writePost;
 	
 	@FindBy(css="button[data-testid='react-composer-post-button']")

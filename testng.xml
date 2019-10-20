@@ -5,12 +5,12 @@
 		<listener
 			class-name="extentreportlistener.ExtentReporterNG" />
 	</listeners>
-	<!-- <test thread-count="5" name="WallethubReviewTest">
+	<test thread-count="5" name="WallethubReviewTest">
 		<parameter name="url" value="https://wallethub.com/profile/test-insurance-company-13732055i"></parameter>
 		<classes>
 			<class name="test.testcases.WallethubTest" />
 		</classes>
-	</test> -->
+	</test>
 	<test name="FacebookTest">
 		<parameter name="url" value="https://www.facebook.com/"></parameter>
 		<classes>

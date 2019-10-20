@@ -18,6 +18,6 @@ public class TC_Common extends GenericHandlers {
 	
 	@AfterMethod
 	public void tearDown() {
-		//closeBrowser();
+		closeBrowser();
 	}
 }

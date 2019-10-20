@@ -27,6 +27,9 @@ public class WallethubCompanyPage {
 	@FindBy(xpath="//article[@class='rvtab-citem rvtab-item-user ng-enter-element']//div[@class='rvtab-ci-content with-links text-select']")
 	WebElement reviewComments;
 	
+	@FindBy(css="span[class='brgm-button brgm-signup']")
+	WebElement login;
+	
 	public WallethubCompanyPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(this.driver, this);
@@ -44,6 +47,12 @@ public class WallethubCompanyPage {
 		log.info("Verifying review comments");
 		wait.waitForElementToBeVisible(reviewComments, ObjectRepository.reader.getExplicitWait());
 		return handlers.getText(reviewComments);
+	}
+	
+	public WallethubJoinPage clickLogin() {
+		log.info("Clicking Login");
+		handlers.clickElement(login);
+		return new WallethubJoinPage(this.driver);
 	}
 	
 	public WallethubNewReview hoverOverStar() {

@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 import configreader.ObjectRepository;
 import configreader.PropertyFileReader;
 import pages.wallethub.WallethubCompanyPage;
+import pages.wallethub.WallethubLoginPage;
 import testcases.common.TC_Common;
 import utility.UtilityClass;
 
@@ -25,22 +26,38 @@ public class WallethubTest extends TC_Common {
 
 	@Test
 	public void createNewReview() {
-		String uName = ObjectRepository.reader.getWalletHubUsername();
-		String pwd = ObjectRepository.reader.getWalletHubPwd();
 		
-		WallethubCompanyPage walletHub = new WallethubCompanyPage(driver)
+		new WallethubCompanyPage(driver)
 		.goToReviewSection()
 		.hoverOverStar()
 		.clickInsuranceDropdown()
 		.selectHealthInsurance()
 		.writeReview(reviewMessage)
-		.clickSubmitReview()
-		.clickLoginLink()
+		.clickSubmitReview();
+		/*.clickLoginLink()
 		.enterUsername(uName)
 		.enterPassword(pwd)
-		.clickLoginBtn();
+		.clickLoginBtn();*/
 		
-		String reviewComment = walletHub.getReviewComments();
+		/*String reviewComment = walletHub.getReviewComments();
+		Assert.assertEquals(reviewComment.trim(), reviewMessage.trim());*/
+	}
+	
+	@Test
+	public void verifyReview() {
+		String uName = ObjectRepository.reader.getWalletHubUsername();
+		String pwd = ObjectRepository.reader.getWalletHubPwd();
+		
+		WallethubCompanyPage companyPage = new WallethubCompanyPage(driver)
+		.clickLogin()
+		.login(uName, pwd)
+		.goToReviewSection();
+		
+		String reviewComment = companyPage.getReviewComments();
 		Assert.assertEquals(reviewComment.trim(), reviewMessage.trim());
+		
+		/*new WallethubLoginPage(driver)
+		.clickLogin()
+		.login(uName, pwd);*/
 	}
 }
