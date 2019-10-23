@@ -17,13 +17,13 @@ public class FacebookLoginPage {
 	private WaitHandler wait;
 	WebDriver driver;
 	
-	@FindBy(id="email")
+	@FindBy(css="input[type='email']")
 	WebElement username;
 	
-	@FindBy(id="pass")
+	@FindBy(css="input[type='password']")
 	WebElement password;
 	
-	@FindBy(css="input[type='submit']")
+	@FindBy(xpath = "//input[@value='Log In']")
 	WebElement logIn;
 	
 	public FacebookLoginPage(WebDriver driver) {

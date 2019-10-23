@@ -28,7 +28,7 @@ public class FacebookTest extends TC_Common {
 			.enterUsername(uName)
 			.enterPassword(pwd)
 			.clickLogin()
-			.writeNewPost("Hello All")
+			.writeNewPost("Hello World")
 			.clickPost();
 	}
 }

@@ -9,7 +9,7 @@ public class UtilityClass {
 	public static String getReviewMessage() {
 		String msg = "";
 		for (int i=0; i<6; i++) {
-			msg += "This is sample review. ";
+			msg += "This is sample Automated review.";
 		}
 		return msg;
 	}

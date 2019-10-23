@@ -43,7 +43,7 @@ public class GenericHandlers {
 
 	public static WebDriver driver;
 	protected static Properties prop;
-	public String sUrl,sHubUrl,sHubPort;
+	
 	public String url;
 
 	public GenericHandlers() {
@@ -135,7 +135,7 @@ public class GenericHandlers {
 	 */
 	public void enterData(WebElement element, String data) {
 		try {
-			element.clear();
+			//element.clear();
 			element.sendKeys(data);
 			log.info("The data: "+data+" entered successfully in field");
 		} catch (NoSuchElementException e) {

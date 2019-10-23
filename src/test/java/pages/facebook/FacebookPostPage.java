@@ -3,6 +3,7 @@ package pages.facebook;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -18,16 +19,18 @@ public class FacebookPostPage {
 	private WaitHandler wait;
 	WebDriver driver;
 	
-	@FindBy(css="div._1p1t")
-	WebElement newPost;
 	
-	@FindBy(css="div#pagelet_composer")
+	
+    @FindBy(css="div#pagelet_composer") 
 	WebElement postDialog;
-	
-	@FindBy(xpath="//div[@id='pagelet_composer']//following::div[@class='_1p1v']")
-	WebElement writePost;
-	
-	@FindBy(css="button[data-testid='react-composer-post-button']")
+	 
+    @FindBy(xpath = "//div[contains(text(),'something here')]")
+	WebElement newPostarea;
+    
+    @FindBy(xpath="//div[contains (@aria-label,'something here')]") 
+    WebElement 	 writePostActive;
+    
+	@FindBy(xpath="//button[@data-testid='react-composer-post-button']")
 	WebElement postBtn;
 	
 	public FacebookPostPage(WebDriver driver) {
@@ -38,12 +41,14 @@ public class FacebookPostPage {
 	}
 	
 	public FacebookPostPage writeNewPost(String post) {
-		log.info("Clicking on new post text area");
-		wait.waitForElementToBeClickable(ObjectRepository.reader.getExplicitWait(), newPost);
-		handlers.clickElement(newPost);
-		wait.waitForElementToBeVisible(postDialog, 30);
-		wait.waitForElementToBeClickable(ObjectRepository.reader.getExplicitWait(), writePost);
-		handlers.enterData(writePost, post);
+		log.info("Writing on new post text area");
+//		wait.waitForElementToBeClickable(ObjectRepository.reader.getExplicitWait(), newPostarea);
+		wait.waitForElementToBeVisible(postDialog, 5);
+    	handlers.clickElement(postDialog);
+		wait.waitForElementToBeVisible(newPostarea, 5);
+//		wait.waitForElementToBeClickable(ObjectRepository.reader.getExplicitWait(), writePost);
+		handlers.clickElement(writePostActive);
+		handlers.enterData(writePostActive, post);
 		return this;
 	}
 	
@@ -51,5 +56,6 @@ public class FacebookPostPage {
 		log.info("Click Post button");
 		wait.waitForElementToBeClickable(30, postBtn);
 		handlers.clickElement(postBtn);
+		wait.waitForElementToBeVisible(newPostarea, 5);
 	}
 }
