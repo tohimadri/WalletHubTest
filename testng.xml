@@ -11,10 +11,10 @@
 			<class name="test.testcases.WallethubTest" />
 		</classes>
 	</test>
-	<test name="FacebookTest">
+	<!-- <test name="FacebookTest">
 		<parameter name="url" value="https://www.facebook.com/"></parameter>
 		<classes>
 			<class name="test.testcases.FacebookTest" />
 		</classes>
-	</test>
+	</test> -->
 </suite> <!-- Suite -->

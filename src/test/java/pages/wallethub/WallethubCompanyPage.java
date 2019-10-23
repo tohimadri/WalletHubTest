@@ -49,12 +49,6 @@ public class WallethubCompanyPage {
 		return handlers.getText(reviewComments);
 	}
 	
-	public WallethubJoinPage clickLogin() {
-		log.info("Clicking Login");
-		handlers.clickElement(login);
-		return new WallethubJoinPage(this.driver);
-	}
-	
 	public WallethubNewReview hoverOverStar() {
 		log.info("Selecting rating");
 		wait.waitForElementToBeVisible(rating, ObjectRepository.reader.getExplicitWait());

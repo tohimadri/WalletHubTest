@@ -47,12 +47,6 @@ public class WallethubLoginPage {
 		handlers.clickElement(loginLink);
 		return this;
 	}
-
-	public WallethubJoinPage clickLogin() {
-		log.info("Clicking Login");
-		handlers.clickElement(login);
-		return new WallethubJoinPage(this.driver);
-	}
 	
 	public WallethubLoginPage enterUsername(String email) {
 		log.info("Entering username");
