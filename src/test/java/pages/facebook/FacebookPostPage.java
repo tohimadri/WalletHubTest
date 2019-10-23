@@ -24,10 +24,10 @@ public class FacebookPostPage {
     @FindBy(css="div#pagelet_composer") 
 	WebElement postDialog;
 	 
-    @FindBy(xpath = "//div[contains(text(),'something here')]")
+    @FindBy(xpath = "//div[contains(text(),'mind')]")
 	WebElement newPostarea;
     
-    @FindBy(xpath="//div[contains (@aria-label,'something here')]") 
+    @FindBy(xpath="//div[contains (@aria-label,'mind')]") 
     WebElement 	 writePostActive;
     
 	@FindBy(xpath="//button[@data-testid='react-composer-post-button']")
